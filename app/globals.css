@@ -1,26 +1,264 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-swiggy), Arial, Helvetica, sans-serif;
+
+  --color-swiggy-orange: #fc8019;
+  --color-swiggy-orange-dark: #984800;
+  --color-swiggy-ink: #02060c;
+  --color-swiggy-heading: #1a1c1c;
+  --color-swiggy-body: #282c3f;
+  --color-swiggy-body-soft: #3d4152;
+  --color-swiggy-muted: #686b78;
+  --color-swiggy-muted-2: #7e808c;
+  --color-swiggy-subtle: #93959f;
+  --color-swiggy-brown: #574236;
+  --color-swiggy-page: #f9f9f9;
+  --color-swiggy-panel: #f4f4f5;
+  --color-swiggy-footer: #f0f0f5;
+  --color-swiggy-control: #f3f3f3;
+  --color-swiggy-control-hover: #eeeeee;
+  --color-swiggy-track: #e0e0e0;
+  --color-swiggy-border: #e9ecee;
+  --color-swiggy-about: #f4f5f8;
+  --color-swiggy-help-panel: #edf1f7;
+  --color-swiggy-blue: #37718e;
+  --color-swiggy-hero-start: #111111;
+  --color-swiggy-hero-end: #2a2a2a;
+  --color-swiggy-green: #60b246;
+  --color-swiggy-green-dark: #4a8a36;
+  --color-swiggy-green-hover: #529b3c;
+  --color-swiggy-offer: #1b9c56;
+  --color-swiggy-offer-dark: #168146;
+  --color-swiggy-stat-green: #1ba672;
+  --color-swiggy-offer-bg: #e4f5ed;
+  --color-swiggy-offer-border: #c3eed7;
+  --color-swiggy-success-bg: #e4f1ea;
+  --color-swiggy-success-border: #a6d8bc;
+  --color-swiggy-accent-lilac: #c084fc;
+  --color-swiggy-pin-bg: #fae8dc;
+  --color-swiggy-danger: #d9534f;
+  --color-swiggy-link-blue: #5d8ed5;
+  --color-swiggy-journey: #13181f;
+  --color-swiggy-journey-panel: #222b36;
+  --color-swiggy-journey-panel-muted: #11161d;
+  --color-swiggy-journey-border: #506071;
+  --color-swiggy-journey-line: #2a313b;
+  --color-swiggy-journey-divider: #d8dde3;
+  --color-swiggy-journey-year: #303946;
+  --color-swiggy-journey-dot: #737b84;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-family: var(--font-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-swiggy-body);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* globals.css */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-swiggy-orange) var(--color-swiggy-control);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  /* horizontal scrollbar height */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-swiggy-control);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-swiggy-orange);
+  /* Swiggy orange */
+  border-radius: 10px;
+}
+
+/* Animations for About Us Page */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+
+.journey-nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.journey-nav-button:hover {
+  transform: translateY(-1px);
+  background: var(--color-swiggy-orange);
+  border-color: var(--color-swiggy-orange);
+}
+
+.journey-nav-button:focus-visible {
+  outline: 3px solid rgba(252, 128, 25, 0.42);
+  outline-offset: 3px;
+}
+
+.journey-track {
+  --journey-card-width: clamp(300px, 66vw, 760px);
+  --journey-card-gap: clamp(18px, 3vw, 44px);
+  --journey-step: calc(var(--journey-card-width) + var(--journey-card-gap));
+}
+
+.journey-card {
+  width: var(--journey-card-width);
+  height: clamp(184px, 20vw, 246px);
+  margin-right: var(--journey-card-gap);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 4vw, 48px);
+  padding: clamp(22px, 4vw, 42px);
+  border-radius: clamp(18px, 2.4vw, 32px);
+  border: 1px solid var(--color-swiggy-journey-border);
+  background: linear-gradient(135deg, var(--color-swiggy-journey-panel), #26313d);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 28px 70px rgba(0, 0, 0, 0.18);
+  transition: opacity 300ms ease, transform 300ms ease, filter 300ms ease, background-color 300ms ease;
+}
+
+.journey-card-muted {
+  background: var(--color-swiggy-journey-panel-muted);
+  border-color: rgba(80, 96, 113, 0.42);
+  filter: saturate(0.55);
+  opacity: 0.34;
+}
+
+.journey-card-active {
+  opacity: 1;
+}
+
+.journey-spark {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+}
+
+.journey-spark::before,
+.journey-spark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: #ffffff;
+  transform: rotate(45deg);
+}
+
+.journey-spark::before {
+  width: 9px;
+  height: 26px;
+  border-radius: 999px;
+}
+
+.journey-spark::after {
+  width: 26px;
+  height: 9px;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .journey-nav-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .journey-track {
+    --journey-card-width: min(78vw, 272px);
+    --journey-card-gap: 18px;
+  }
+
+  .journey-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 68px;
+    min-height: 184px;
+    align-items: center;
+    justify-content: stretch;
+    gap: 12px;
+    padding: 24px 18px;
+  }
+
+  .journey-spark {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  .journey-spark::before {
+    width: 7px;
+    height: 20px;
+  }
+
+  .journey-spark::after {
+    width: 20px;
+    height: 7px;
+  }
+
+  .journey-card-copy {
+    min-width: 0;
+  }
+
+  .journey-card-copy p {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .journey-card-media {
+    width: 64px;
+    height: 64px;
+    justify-self: end;
+  }
 }
