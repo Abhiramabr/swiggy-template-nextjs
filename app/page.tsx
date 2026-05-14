@@ -18,6 +18,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { categories, restaurants, restaurants2 } from './data/restaurants';
+import Chatbot from './components/Chatbot';
 
 export default function Page() {
   const categoriesRef = useRef<HTMLDivElement>(null);
@@ -262,10 +263,8 @@ export default function Page() {
         </Link>
       </nav> */}
 
-      {/* Contextual FAB */}
-      <Link href="/cart" className="fixed bottom-24 right-6 w-14 h-14 bg-swiggy-orange text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-transform md:bottom-10 z-40">
-        <FontAwesomeIcon icon={faBasketShopping} className="text-xl" />
-      </Link>
+      {/* AI Chatbot */}
+      <Chatbot />
     </div>
   );
 }
